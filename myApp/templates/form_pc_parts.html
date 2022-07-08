@@ -1,0 +1,306 @@
+<section id = "forms-and-result">
+<article class="form-1">
+    <form method="POST" id = "find-pc-survey" onchange="displayExpenses(), Compatibility(), displayToResult()">
+        {% csrf_token %}
+        <div class="header-form">
+            <h1>Find your PC</h1>
+            <p>These form will help you to know the right
+            computer parts according to your preferences. <span style="color: red;">Disclaimer: The parts that are suggested are based 
+                from availability in the market.</span>
+            </p>
+        </div>
+
+        <h1>Username: {{user.username}}</h1>
+        
+        <div>
+        
+        <label for="Budget">Budget:  </label>
+            <input type="text" min="10000.00" max="900000.0" name="budget_" id="budget"
+            onkeyup="budgetChecker(document.getElementById('budget').value)">
+        </div>
+
+        <div id = "model-processor">
+                    <label for="model-processesor">
+                        <select name="1model-processesor" id="processor" >
+                            <option value=" ">Choose a processor</option>
+
+                            <!--Intel Processors-->
+                            <option id = 'Intel Core i5-3450' value="Intel Core i5-3450" title="₱ 2,699">
+                                Intel Core i5-3450</option>
+                            <option id = 'Intel Pentium G5400 Gold Coffee Lake' value=" Intel Pentium G5400" title="₱ 2,930">
+                                Intel Pentium G5400</option>
+                            <option id = 'Intel Core I3-10100F' value="Intel Core I3-10100F" title="₱ 4,995">
+                                Intel Core I3-10100F</option>
+                            <option id = 'Intel Core i3 9100F' value="Intel Core i3 9100F" title="₱ 5,599">
+                                Intel Core i3 9100F</option>
+                            <option id = 'Intel Core I3-10100' value="Intel Core I3-10100" title="₱ 6,495">
+                                Intel Core I3-10100</option>
+                            <option id = 'Intel Core i5-9400' value="Intel Core i5-9400" title="₱ 7,950">
+                                Intel Core i5-9400</option>
+                            <option id = 'Intel Core I5-10400' value="Intel Core I5-10400" title="₱ 9,950">
+                                Intel Core I5-10400</option>
+                            <option id = 'Intel Core I5-11400' value="Intel Core i5 11400" title="₱ 10,940">
+                                Intel Core i5 11400</option>
+                            <option id = 'Intel Core i7-10700' value="Intel Core i7-10700" title="₱ 16,800">
+                                Intel Core i7-10700</option>
+                            <option id = 'INTEL Core i7-9700KF' value="Intel Core i7-9700KF" title="₱ 18,192">
+                                Intel Core i7-9700KF</option>
+
+
+                            <!--AMD Processors-->
+                            <option id = 'AMD A8-9600' value="AMD A8-9600" title="₱ 3195">
+                                AMD A8-9600</option>
+                            <option id = 'Athlon 200GE' value="Athlon 200GE" title="₱ 4599">
+                                Athlon 200GE</option>
+                            <option id = 'AMD Athlon 3000G' value="AMD Athlon 3000G" title="₱ 5,095">
+                                AMD Athlon 3000G </option>
+                            <option id = 'AMD RYZEN 3 2200G' value="AMD RYZEN 3 2200G" title="₱ 7699">
+                                AMD RYZEN 3 2200G</option>
+                            <option id = 'AMD RYZEN 3 4350G' value="AMD RYZEN 3 4350G" title="₱ 9000">
+                                AMD RYZEN 3 4350G</option>
+                            <option id = 'Ryzen 5 3500' value="Ryzen 5 3500" title="₱ 9,495">
+                                Ryzen 5 3500</option>
+                            <option id = 'Ryzen 3 3200G' value="Ryzen 3 3200G" title="₱ 11950">
+                                Ryzen 3 3200G</option>
+                            <option id = 'Ryzen 5 3400G' value="Ryzen 5 3400G" title="₱ 13,450">
+                                Ryzen 5 3400G</option>
+                            <option id = 'AMD Ryzen 5 3600' value="AMD Ryzen 5 3600" title="₱ 14,159">
+                                AMD Ryzen 5 3600</option>
+                            <option id = 'AMD Ryzen 5 Pro 4650G' value="AMD Ryzen 5 Pro 4650G" title="₱ 14,495">
+                                AMD Ryzen 5 Pro 4650G</option>
+                            <option id = 'AMD Ryzen 5 5600G' value="AMD Ryzen 5 5600G" title="₱ 15,195">
+                                AMD Ryzen 5 5600G</option>
+                            <option id = 'AMD Ryzen 5 5600X' value="AMD Ryzen 5 5600X" title="₱ 16,350">
+                                AMD Ryzen 5 5600X</option>
+                            <option id = 'AMD Ryzen 7 5700G' value="AMD Ryzen 7 5700G" title="₱ 23,225">
+                                AMD Ryzen 7 5700G</option>
+
+
+                        </select>
+                    </label>
+                </div>
+
+                <div id = "motherboard">
+                    <label for="motherboard">
+                        <select name="motherboard" id="motherboardChoices">
+                            <option value="">Choose a motherboard</option>
+
+                            <!--Intel Core i5-3450-->
+                            <option id="Gigabyte GA-H61M-DS2" value="Gigabyte GA-H61M-DS2" title="₱ 1,390">Gigabyte GA-H61M-DS2</option>
+                            <option id="Gigabyte GA-B75M-D3H" value="Gigabyte GA-B75M-D3H" title="₱ 3,165">Gigabyte GA-B75M-D3H</option>
+                            <option id="Asus P8Z77-V PRO" value="Asus P8Z77-V PRO" title="₱ 4,720">Asus P8Z77-V PRO</option>
+                            <option id="Asus Sabertooth Z77" value="Asus Sabertooth Z77" title="₱ 6,683">Asus Sabertooth Z77</option>
+                            <option id="ASRock Z77 Extreme" value="ASRock Z77 Extreme" title="₱ 7,275">ASRock Z77 Extreme </option>
+
+                            <!--Intel Pentium G5400-->
+                            <option id="Biostar H310M" value="Biostar H310M" title="₱ 2,890">Biostar H310M</option>
+                            <option id="H310M PRO-VDH PLUS" value="H310M PRO-VDH PLUS" title="₱ 2,890">H310M PRO-VDH PLUS</option>
+                            <option id="H310CM-HDV" value="H310CM-HDV" title="₱ 2,890">H310CM-HDV</option>
+                            <option id="Gigabyte H310M DS2 2.0" value="Gigabyte H310M DS2 2.0" title="₱ 3,450">Gigabyte H310M DS2 2.0</option>
+
+                            <!--Intel Core i5-9400 % Intel Core i5-9100F & INTEL Core i7-9700KF-->
+                            <option id="H310M H 2.0" value="H310M H 2.0" title="₱ 2,799">H310M H 2.0</option>
+                            <option id="Gigabyte H310M S2H" value="H310CM-HDV" title="₱ 3,794">H310CM-HDV</option>
+                            <option id="ASRock H310CM-HDV" value="ASRock H310CM-HDV" title="₱ 9,626">ASRock H310CM-HDV</option>
+                            <option id="ASRock B365M Pro4" value="ASRock B365M Pro4" title="₱ 11,076">ASRock B365M Pro4 </option>
+
+
+                            <!--Intel Core I3-10100F & intel core i3-10100 &
+                                Intel Core I5-10400 & Intel Core I5-11400 & Intel Core i7-10700-->
+                            <option id="Msi B460M-A" value="Msi B460M-A" title="₱ 3,895">Msi B460M-A</option>
+                            <option id="MSI H510M-A Pro" value="MSI H510M-A Pro" title="₱ 4,095">MSI H510M-A Pro</option>
+                            <option id="ASRockH510M-HDV" value="ASRockH510M-HDV" title="₱ 5,100">ASRockH510M-HDV </option>
+                            <option id="ASrock B460" value="ASRock B460" title="₱ 6,164">ASRock B460</option>
+
+
+                            <!--AM4 Sockets-->
+
+                            <option id="Asus Prime A320M" value="Asus Prime A320M-K" title="₱ 2,845"> Asus Prime A320M-K</option>
+                            <option id="A320M-A PRO" value="A320M-A PRO" title="₱ 2,850">A320M-A PRO</option>
+                            <option id="Msi A320M Pro-VH" value="Msi A320M Pro-VH" title="₱ 2,895">Msi A320M Pro-VH</option>
+                            <option id="Asus EX A320M" value="Asus EX A320M" title="₱ 3,135">Asus EX A320M</option>
+                            <option id="B450M-A PRO MAX" value="B450M-A PRO MAX" title="₱ 4,044">B450M-A PRO MAX</option>
+                            <option id="Asrock B450M Steel Legend" value="Asrock B450M Steel Legend" title="₱ 4,995">Asrock B450M Steel Legend</option>
+                            <option id="ASUS TUF GAMING B450M-PLUS II" value="ASUS TUF GAMING B450M-PLUS II" title="₱ 5,400">ASUS TUF GAMING B450M-PLUS II</option>
+                            <option id="ASUS TUF GAMING B550M-PLUS (WI-FI)" value="ASUS TUF GAMING B550M-PLUS (WI-FI)" title="₱ 9,600">ASUS TUF GAMING B550M-PLUS (WI-FI)</option>
+
+                        </select>
+                    </label>
+                </div>
+
+                <div id = "storage-choice">
+                    <legend>Choose type of storage.</legend>
+                    <label for="ssd">
+                        <input type="radio" name = "storage" id = "ssd" onclick="hideHdd(), showSdd()">Solid State Drive
+                    </label>
+                    <label for="hardisk">
+                        <input type="radio" name = "storage" id = "hardisk" onclick="showHdd(), hideSdd()">Hardisk
+                    </label>
+                </div>
+
+                <div id = "size-storage">
+                    <label for="size-storage">
+                        <select name="size-storage" id="size-storage-choice" >
+                            <option value="">Pick a storage size:</option>
+                            <option id="Seagate 500gb HDD" value="Seagate -- 500gb">Seagate -- 500gb</option>
+                            <option id="SeagateBarracuda" value="Seagate Barracuda -- 1tb">Seagate Barracuda -- 1tb</option>
+                            <option id="Western Digital Blue 1tb" value="Western Digital Blue -- 1tb">Western Digital Blue -- 1tb</option>
+                            <option id="Western Digital Blue -- 2tb" value="Western Digital Blue -- 2tb">Western Digital Blue -- 2tb</option>
+                            <option id="Seagate -- 4tb" value="Seagate -- 4tb">Seagate -- 4tb</option>
+
+                            <option id = "Kingspec" value="Kingspec -- 120gb">Kingspec -- 120gb</option>
+                            <option id = "PNY CS900" value="PNY CS900 -- 240gb">PNY CS900 -- 240gb</option>
+                            <option id = "Adata SU630" value="Adata SU630 -- 240gb">Adata SU630 -- 240gb</option>
+                            <option id = "Western Digital Ssd 240" value="Western Digital -- 240gb">Western Digital -- 240gb</option>
+                            <option id = "SanDisk -- 240gb" value="SanDisk -- 240gb">SanDisk -- 240gb</option>
+                            <option id = "GigabyteSsd" value="Gigabyte -- 240gb">Gigabyte -- 240gb</option>
+                            <option id = "Kingston A400" value="Kingston A400 -- 240gb">Kingston A400 -- 240gb</option>
+
+                        </select>
+                    </label>
+                </div>
+
+                <div id = "ram-dropdown">
+                    <label for="rams">
+                        <select name="rams" id="rams">
+                            <option value="" style="text-align: center;">Pick a RAM</option>
+                            <option id = 'Kingston HyperX Fury 4GB 2400Mhz DDR4'value=" 4GB Kingston HyperX Fury DDR4 2400Mhz">
+                                4GB Kingston HyperX Fury DDR4 2400Mhz</option>
+                            <option id = '2x Kingston HyperX Fury 4GB 2400Mhz DDR4'value="4GB Kingston HyperX Fury DDR4 2400Mhz --- x2">
+                                4GB Kingston HyperX Fury DDR4 2400Mhz --- x2 </option>
+                            <option id = '16GB Kingston HyperX Fury DDR4 2400Mhz'value="16GB Kingston HyperX Fury DDR4 2400Mhz">
+                                16GB Kingston HyperX Fury DDR4 2400Mhz</option>
+                            <option id = '16GB Kingston HyperX Fury DDR4 2400Mhz --- x2'value="16GB Kingston HyperX Fury DDR4 2400Mhz --- x2">
+                                16GB Kingston HyperX Fury DDR4 2400Mhz --- x2</option>
+                            <option id = '4GB Ramsta DDR4 2666Mhz'value="4GB Ramsta DDR4 2666Mhz">
+                                4GB Ramsta DDR4 2666Mhz</option>
+                            <option id = '4GB Ramsta DDR4 2666Mhz --- x2'value="4GB Ramsta DDR4 2666Mhz --- x2">
+                                4GB Ramsta DDR4 2666Mhz --- x2</option>
+                            <option id = '8GB Ramsta DDR4 2666Mhz' value=" 8GB Ramsta DDR4 2666Mhz">
+                                8GB Ramsta DDR4 2666Mhz</option>
+                            <option id = '8GB Ramsta DDR4 2666Mhz --- x2' value=" 8GB Ramsta DDR4 2666Mhz  --- x2">
+                                8GB Ramsta DDR4 2666Mhz  --- x2</option>
+                            <option id = 'Kingston Fury Beast 4GB 2666mhz' value="Kingston Fury Beast 4GB DDR4 2666mhz">
+                                Kingston Fury Beast 4GB DDR4 2666mhz</option>
+                            <option id = 'Kingston Fury Beast 4GB 2666mhz --- x2' value="Kingston Fury Beast 4GB DDR4 2666mhz --- x2">
+                                Kingston Fury Beast 4GB DDR4 2666mhz --- x2</option>
+                            <option id = 'Kingston Fury Beast 8GB 2666mhz' value="Kingston Fury Beast 8GB DDR4 2666mhz">
+                                Kingston Fury Beast 8GB DDR4 2666mhz</option>
+                            <option id = 'Kingston Fury Beast 8GB 2666mhz --- x2' value="Kingston Fury Beast 8GB DDR4 2666mhz --- x2">
+                                Kingston Fury Beast 8GB DDR4 2666mhz --- x2</option>
+                            <option id = 'Kingston Fury Beast 16GB 2666mhz' value="Kingston Fury Beast 16GB DDR4 2666mhz">
+                                Kingston Fury Beast 16GB DDR4 2666mhz</option>
+                            <option id = 'Kingston Fury Beast 16GB 2666mhz --- x2' value="Kingston Fury Beast 16GB DDR4 2666mhz --- x2">
+                                Kingston Fury Beast 16GB DDR4 2666mhz --- x2</option>
+                            <option id = 'Corsair Vengeance LPX 8GB DDR4' value=" Corsair Vengeance LPX 8GB DDR4 3200mhz">
+                                Corsair Vengeance LPX 8GB DDR4 3200mhz </option>
+                            <option id = 'T-Force Vulcan TUF Gaming Alliance 16GB 3200mhz -- ( 8GBx2 )' value="T-Force Vulcan TUF Gaming Alliance 16GB DDR4 3200mhz -- ( 2x8GB )">
+                                T-Force Vulcan TUF Gaming Alliance 16GB DDR4 3200mhz -- ( 2x8GB ) </option>
+                            <option id = 'Corsair Vengeance LPX 16GB 3200mhz -- ( 2x8GB )' value="Corsair Vengeance LPX 16GB DDR4 3200mhz -- ( 2x8GB )">
+                                Corsair Vengeance LPX 16GB DDR4 3200mhz -- ( 2x8GB ) </option>
+                            <option id = 'Crucial Ballistix RGB 16GB DDR4 3200mhz -- ( 2x8GB )' value="Crucial Ballistix RGB 16GB DDR4 3200mhz -- ( 2x8GB )">
+                                Crucial Ballistix RGB 16GB DDR4 3200mhz -- ( 2x8GB ) </option>
+
+                        </select>
+                    </label>
+                </div>
+
+                <div id = "graphics-dropdown">
+                    <label for="graphics-card">
+                        <select name="graphics-card" id="graphics-card">
+                            <option value="">Choose a graphics-card</option>
+                            <option id = "Colorful GeForce GT730K"  value="3099">Colorful GeForce GT730K -- 2gb</option>
+                            <option id = "Asus GeForce GT730"  value="3600">Asus GeForce GT730 -- 2gb</option>
+                            <option id = "Colorful GT1030"  value="4699">Colorful GT1030 -- 2gb</option>
+                            <option id = "Colorful GT1030"  value="5299">Colorful GT1030 -- 4gb</option>
+                            <option id = "Gigabyte GTX1050Ti"  value="9999">Gigabyte GTX1050Ti -- 4gb</option>
+                            <option id = "Colorful GTX1050Ti"  value="10499">Colorful GTX1050Ti -- 4gb</option>
+                            <option id = "Palit GTX1650"  value="13495">Palit GTX1650 -- 4gb</option>
+                            <option id = "Colorful GTX1650"  value="13999">Colorful GTX1650 -- 4gb</option>
+
+                        </select>
+                    </label>
+                </div>
+
+                <div id = "powersupply">
+                    <label for="powersupply">
+                        <select name="powersupply" id="powersupplyChoices">
+                            <option value="">Choose a powersupply</option>
+                            <option id="RAKK 400 watts" value="RAKK 400 watts">RAKK 400 watts</option>
+                            <option id="InPlay GS450P 450 Watts" value="InPlay GS450P -- 450Watts">InPlay GS450P -- 450Watts</option>
+                            <option id="Cooler Master ELITE V3 500W" value="Cooler Master ELITE V3 -- 500Watts">Cooler Master ELITE V3 -- 500Watts</option>
+                            <option id="Seasonic S12III 550 80+ 550Watts" value="Seasonic S12III 550 80+ -- 550Watts">Seasonic S12III 550 80+ -- 550Watts</option>
+                            <option id="Thermaltake Litepower 2" value="Thermaltake Litepower 2 -- 550Watts">Thermaltake Litepower 2 -- 550Watts</option>
+                            <option id="CORSAIR CV550 80+" value="CORSAIR CV550 80+ -- 550Watts">CORSAIR CV550 80+ -- 550Watts</option>
+                            <option id="STEAMPUNK 650W 80+" value="STEAMPUNK 650W 80+ -- 650Watts">STEAMPUNK 650W 80+ -- 650Watts</option>
+                            <option id="Intelligent Power Supply" value="Intelligent -- 700watts">Intelligent -- 700watts</option>
+                            <option id="Intelligent Awake AK700W 700W" value="Intelligent Awake AK700W 80+ -- 700Watts">Intelligent Awake AK700W 80+ -- 700Watts</option>
+                            <option id="Silverstone 700Watts 80+" value="Silverstone 80+ -- 700Watts">Silverstone 80+ -- 700Watts </option>
+                            <option id="Corsair CV750 80+" value="Corsair CV750 80+ -- 750 watts">Corsair CV750 80+ -- 750 watts </option>
+
+                        </select>
+                    </label>
+                </div>
+
+                <div id = "pc_case">
+                    <label for="pc_case">
+                        <select name="pc_case" id="pc_case_choice">
+                            <option value="">Choose a chassis   </option>
+                            <option id="Rakk Marug" value="Rakk Marug -- MicroATX">Rakk Marug -- MicroATX</option>
+                            <option id="Rakk Anyag" value="Rakk Anyag -- MicroATX">Rakk Anyag -- MicroATX</option>
+                            <option id="Keytech Arrow" value="Keytech Arrow -- Mid Tower">Keytech Arrow -- Mid Tower</option>
+                            <option id="Inplay Meteor 01" value="Inplay Meteor 01 -- Mid Tower">Inplay Meteor 01 -- Mid Tower</option>
+                            <option id="Inplay Meteor 03" value="Inplay Meteor 03 -- Mid Tower">Inplay Meteor 03 -- Mid Tower</option>
+                            <option id="Rakk Haliya" value="Rakk Haliya -- Mid Tower">Rakk Haliya -- Mid Tower</option>
+                            <option id="Fantech Case Aero CG80" value="Fantech Case Aero CG80 -- Mid Tower">Fantech Case Aero CG80 -- Mid Tower</option>
+
+                        </select>
+                    </label>
+                </div>
+
+                <div id = "fan">
+                    <label for="fan">
+                        <select name="fan" id="fan_choice">
+                            <option value="">Choose a Fan   </option>
+                            <option id="Allan 12V Fan -- 80mm" value="Allan 12V Fan -- 80mm">Allan 12V Fan -- 80mm</option>
+                            <option id="Allan 12V Fan -- 120mm" value="Allan 12V Fan -- 120mm">Allan 12V Fan -- 120mm</option>
+                            <option id="ALLAN new style LED fan -- 120mm" value="ALLAN new style LED fan -- 120mm">ALLAN new style LED fan -- 120mm</option>
+                            <option id="GSTORM Dual Ring WHITE Led fan -- 120mm" value="GSTORM Dual Ring WHITE Led -- 120mm">GSTORM Dual Ring WHITE Led -- 120mm</option>
+                            <option id="GSTORM Dual Ring RED Led fan -- 120mm" value="GSTORM Dual Ring RED Led -- 120mm">GSTORM Dual Ring RED Led -- 120mm</option>
+                            <option id="GSTORM Dual Ring AURORA Led fan -- 120mm" value="GSTORM Dual Ring AURORA Led -- 120mm">GSTORM Dual Ring AURORA Led -- 120mm</option>
+                            <option id="Powerlong PH -- 120mm" value="Powerlong PH White Led -- 120mm">Powerlong PH White Led -- 120mm</option>
+
+                        </select>
+                    </label>
+                </div>
+
+                <div id = 'button'>
+                    <button type="submit">Submit</button>
+                </div>
+
+            </form>
+        </article>
+        <article class="form-2">
+            <div class = "result-form">
+                <h1>Result</h1>
+                <p>This part will show you the pictures of the items
+                    that is recommended for you and the location or store
+                    where you can find it.
+                </p>
+
+                <div>
+                    <p id="exp">Expenses: ₱</p>
+                    <p id="brandProcessor"> Brand of Processor: </p>
+                    <p id="brandMotherboard">    </p>
+                    <p id="Storagetype">Storage: </p>
+                    <p id="ramchoice">RAM:  </p>
+                    <p id="graphics_">Graphics Card: </p>
+                    <p id="psu_">Power Supply: </p>
+                    <p id="chassis_">Case:  </p>
+                    <p id="fan_">Fan: </p>
+
+                </div>
+
+    </div>
+    
+</article>
