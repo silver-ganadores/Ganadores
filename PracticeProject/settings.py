@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=r8t#s0gwg!mwg3@pwh)nch2ns$lqfiivzoah9-2ik2nv%p=p+'
-
+#SECRET_KEY = '=r8t#s0gwg!mwg3@pwh)nch2ns$lqfiivzoah9-2ik2nv%p=p+'
+SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['techknowledge.ph']
+ALLOWED_HOSTS = ['techknowledgeph.pythonanywhere.com']
 
 
 # Application definition
@@ -77,8 +77,11 @@ WSGI_APPLICATION = 'PracticeProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'techknowledgeph$default',
+        'USER': 'techknowledgeph',
+        'PASSWORD': 'silverdatabase',
+        'HOST': 'techknowledgeph.mysql.pythonanywhere-services.com',
     }
 }
 

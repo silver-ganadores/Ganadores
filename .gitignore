@@ -7,4 +7,4 @@ geckodriver.log
 *.pot
 *.log
 .static
-
+.env
